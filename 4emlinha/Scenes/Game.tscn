@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4li4datmweoh"]
+
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_p4gb0"]
+[ext_resource type="Texture2D" uid="uid://c4l3pavgkplt5" path="res://Assets/Board2.png" id="2_fchsc"]
+[ext_resource type="Script" path="res://Scripts/ColumnPlacer.cs" id="2_h0i03"]
+[ext_resource type="Script" path="res://Scripts/RestartButton.cs" id="2_l8up3"]
+[ext_resource type="Script" path="res://Scripts/SpecialAbilityButton.cs" id="3_ef230"]
+[ext_resource type="Script" path="res://Scripts/Board.cs" id="3_ft1a3"]
+[ext_resource type="AudioStream" uid="uid://bmmbir2l2vop4" path="res://Sounds/sucessoSFX.wav" id="6_3b5nf"]
+[ext_resource type="AudioStream" uid="uid://cakvfxstmhs70" path="res://Sounds/mixkit-sword-magic-drag-3009.wav" id="6_adifs"]
+[ext_resource type="AudioStream" uid="uid://dvjvauf4jfrbb" path="res://Sounds/mixkit-low-explosion-indoors-2187.wav" id="7_acbqh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32tmv"]
+bg_color = Color(0.6, 0.6, 0.6, 0.866667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhe1x"]
+bg_color = Color(0.482353, 0, 0, 0.701961)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_p4gb0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 650.0
+color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[node name="Main" type="Control" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1112.0
+offset_bottom = 606.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="Control/ColorRect/Main"]
+layout_mode = 0
+offset_left = 22.461
+offset_top = 15.0
+offset_right = 87.461
+offset_bottom = 46.0
+mouse_default_cursor_shape = 2
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uhe1x")
+text = "Restart"
+script = ExtResource("2_l8up3")
+
+[node name="SpecialAbilityButton" type="Button" parent="Control/ColorRect/Main"]
+layout_mode = 0
+offset_left = 1028.0
+offset_top = 482.0
+offset_right = 1127.0
+offset_bottom = 560.0
+mouse_default_cursor_shape = 2
+theme_override_colors/icon_disabled_color = Color(1, 0.980392, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_32tmv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uhe1x")
+text = "Color 
+Change"
+script = ExtResource("3_ef230")
+
+[node name="Colums" type="Node2D" parent="Control"]
+
+[node name="Colum0" type="Node2D" parent="Control/Colums"]
+position = Vector2(390, 52)
+script = ExtResource("2_h0i03")
+
+[node name="Colum1" type="Node2D" parent="Control/Colums"]
+position = Vector2(465, 52)
+script = ExtResource("2_h0i03")
+
+[node name="Colum2" type="Node2D" parent="Control/Colums"]
+position = Vector2(540, 52)
+script = ExtResource("2_h0i03")
+
+[node name="Colum3" type="Node2D" parent="Control/Colums"]
+position = Vector2(615, 52)
+script = ExtResource("2_h0i03")
+
+[node name="Colum4" type="Node2D" parent="Control/Colums"]
+position = Vector2(690, 52)
+script = ExtResource("2_h0i03")
+
+[node name="Colum5" type="Node2D" parent="Control/Colums"]
+position = Vector2(765, 52)
+script = ExtResource("2_h0i03")
+
+[node name="LblInfo" type="Label" parent="."]
+offset_left = 346.0
+offset_top = 578.0
+offset_right = 791.0
+offset_bottom = 643.0
+
+[node name="AudioWin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3b5nf")
+volume_db = -10.0
+mix_target = 1
+
+[node name="AudioDraw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_adifs")
+volume_db = -10.0
+mix_target = 1
+
+[node name="AudioLose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_acbqh")
+volume_db = -10.0
+mix_target = 1
+
+[node name="Board" type="Node2D" parent="."]
+script = ExtResource("3_ft1a3")
+
+[node name="Overlay" type="Sprite2D" parent="Board"]
+position = Vector2(576, 328)
+scale = Vector2(0.746914, 0.746914)
+texture = ExtResource("2_fchsc")

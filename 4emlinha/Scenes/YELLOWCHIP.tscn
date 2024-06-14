@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj5kxau1vf77y"]
+
+[ext_resource type="Script" path="res://Scripts/YellowChips.cs" id="1_ejsvx"]
+
+[node name="YellowChips" type="Sprite2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_ejsvx")

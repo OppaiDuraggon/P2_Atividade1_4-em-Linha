@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3jyqg1kpja4y"]
+
+[ext_resource type="Script" path="res://Scripts/SwapColorChips.cs" id="1_3qwj3"]
+
+[node name="SwapColorChip" type="Sprite2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_3qwj3")
